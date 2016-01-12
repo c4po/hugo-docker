@@ -14,6 +14,5 @@
 FROM golang
 RUN go get -v github.com/spf13/hugo
 VOLUME ["/src", "/dest"]
-ENV HUGO_BUILD_DRAFT false
 ENTRYPOINT ["hugo"]
-CMD ["--watch", "--source=/src", "--destination=/dest", "--buildDrafts=${HUGO_BUILD_DRAFT}"]
+CMD ["--watch", "--source=/src", "--destination=/dest" ]
