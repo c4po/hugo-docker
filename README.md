@@ -9,8 +9,13 @@ fork from [git-sync demo](https://github.com/kubernetes/contrib/tree/master/git-
 ```
 # build the container
 docker build -t hugo .
+
 # run the hugo container
-docker run -e HUGO_BASE_URL=example.com -v /path/to/md:/src -v /path/to/html:/dest hugo
+docker run -d -e HUGO_BUILD_DRAFT=true -v /git-data:/src -v /html:/dest bonesoul/hugo
+
+# start the nginx
+docker run -d -p 8080:80 -v /html:/usr/share/nginx/html nginx 
+
 ```
 
 
